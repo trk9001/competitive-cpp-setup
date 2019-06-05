@@ -1,0 +1,17 @@
+# VS Code config dir
+.vscode/
+
+# Object file
+*.o
+
+# Precompiled header file
+*.gch
+
+# Executable binaries
+*.out
+program
+main
+
+# IO-related files
+output.txt
+input.txt
