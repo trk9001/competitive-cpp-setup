@@ -25,3 +25,5 @@ remove: clean
 
 new: clean
 	cp $(TEMPLATECPP) $(PROGRAMCPP)
+	-rm input.txt
+	touch input.txt
