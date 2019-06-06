@@ -22,10 +22,9 @@ echo "Path found: $fil"
 # Copy to a local version and compile it
 echo 'Precompiling bits/stdc++.h locally ...'
 mkdir -p bits
-pushd bits >/dev/null
-cp $fil .
-g++ -std=c++14 stdc++.h
-popd >/dev/null
+cp $fil bits/.
+g++ -std=c++14 bits/stdc++.h
+rm -v a.out
 echo 'Done'
 
 if [[ "$?" == "0" ]]; then
