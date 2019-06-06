@@ -7,18 +7,30 @@
 # compile your program.
 
 # Exit if the bits directory exists
-[[ -d 'bits' ]] && exit 1
+if [[ -f 'bits/stdc++.h.gch' ]]; then
+    echo 'Precompiled header already exists'
+    echo 'OK'
+    exit 0
+fi
 
 # Find the header file's path
+echo "Finding path to system's bits/stdc++.h ..."
 tmp=$(g++ -std=c++14 -H templates/template.cpp 2>&1 | grep bits/stdc++.h)
 fil=`echo $tmp | awk '{ print $NF }'`
-echo $fil
+echo "Path found: $fil"
 
 # Copy to a local version and compile it
-mkdir bits
-pushd bits
+echo 'Precompiling bits/stdc++.h locally ...'
+mkdir -p bits
+pushd bits >/dev/null
 cp $fil .
 g++ -std=c++14 stdc++.h
-popd
+popd >/dev/null
+echo 'Done'
 
-exit 0
+if [[ "$?" == "0" ]]; then
+    echo 'OK'
+    exit 0
+else
+    exit 1
+fi
