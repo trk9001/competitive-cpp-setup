@@ -9,7 +9,6 @@
 # Exit if the bits directory exists
 if [[ -f 'bits/stdc++.h.gch' ]]; then
     echo 'Precompiled header already exists'
-    echo 'OK'
     exit 0
 fi
 
@@ -28,7 +27,6 @@ rm -v a.out
 echo 'Done'
 
 if [[ "$?" == "0" ]]; then
-    echo 'OK'
     exit 0
 else
     exit 1
